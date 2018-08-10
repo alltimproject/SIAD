@@ -16,7 +16,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive" style="height: 400px;">
-        <table class="table" id="t_penduduk" style="font-size: 11px">
+        <table class="table" id="t_kelahiran" style="font-size: 11px">
           <thead class="bg-purple" style="color: white;">
             <tr>
               <th>No Surat</th>
@@ -34,3 +34,45 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  function load_kelahiran(cari)
+  {
+    $.ajax({
+      url: '<?= base_url().'json/json_kelahiran' ?>',
+      type: 'POST',
+      dataType: 'JSON',
+      data: {
+        cari: cari
+      },
+      success: function(data){
+        var html = '';
+
+        if(data.kelahiran.length <= 0){
+          html += '<tr><td colspan="7">Tidak ada data</td></tr>';
+        } else {
+
+          $.each(data.kelahiran, function(k, v){
+            html += `<tr>`;
+            html += `<td>${v.no_surat}</td>`;
+            html += `<td>${v.nama_penduduk}</td>`;
+            html += `<td>${v.tgl_surat}</td>`;
+            html += `<td>${v.anak_ke}</td>`;
+            html += `<td>${v.nama_ibu}</td>`;
+            html += `<td>${v.nama_ayah}</td>`;
+            html += `<td>${v.username}</td>`;
+            html += `</tr>`;
+          });
+        }
+
+        $('#t_kelahiran tbody').html(html);
+      }
+    });
+  }
+
+  $(document).ready(function(){
+
+    load_kelahiran();
+
+  });
+</script>

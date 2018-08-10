@@ -16,7 +16,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive" style="height: 400px;">
-        <table class="table" id="t_penduduk" style="font-size: 11px">
+        <table class="table" id="t_keterangan" style="font-size: 11px">
           <thead class="bg-purple" style="color: white;">
             <tr>
               <th>No Surat</th>
