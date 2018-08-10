@@ -6,11 +6,12 @@
   {
     function show_kelahiran($where = null, $between = null)
     {
-      $this->db->select('a.*, b.*, c.nama_penduduk as nama_ibu, d.nama_penduduk as nama_ayah');
+      $this->db->select('a.*, b.*, c.nama_penduduk as nama_ibu, d.nama_penduduk as nama_ayah, e.username');
       $this->db->from('t_kelahiran a');
       $this->db->join('t_penduduk b', 'b.id_penduduk = a.id_penduduk', 'left');
       $this->db->join('t_penduduk c', 'c.id_penduduk = a.id_ibu', 'left');
       $this->db->join('t_penduduk d', 'd.id_penduduk = a.id_ayah', 'left');
+      $this->db->join('t_user e', 'e.username = a.input_by', 'left');
 
       if($where != null)
       {
