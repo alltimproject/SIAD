@@ -1,16 +1,16 @@
 <div class="content-header row">
-  <div class="content-header-left col-md-6 col-xs-12 mb-1">
+  <div class="content-header-left col-md-6 col-xs-6 mb-1">
     <h2 class="content-header-title">Penduduk</h2>
   </div>
-  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-12">
+  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-6">
     <div class="breadcrumb-wrapper col-xs-12">
-
+      <button type="button" id="simpan" class="btn btn-md btn-primary" style="float: right">Tambah</button>
     </div>
   </div>
 </div>
 
 <div class="content-body">
-  <div class="card">
+  <div class="card" id="card-form">
     <div class="card-header">
       <h4 class="card-title">Form Penduduk</h4>
     </div>
@@ -89,6 +89,10 @@
                 </select>
               </div>
             </div>
+            <div class="col-md-12">
+                <button type="submit" id="submit_penduduk" class=""></button>
+                <button type="button" id="batal" class="btn btn-danger btn-md col-md-6">Batal</button>
+            </div>
           </div>
         </form>
       </div>
@@ -164,8 +168,54 @@
   }
 
   $(document).ready(function(){
+    var save_method;
 
     load_penduduk();
+    $('#card-form').hide();
+
+    $('#simpan').on('click', function(){
+      save_method = 'simpan';
+      $('.form-data')[0].reset();
+      $('#id_penduduk').focus();
+      $('#submit_penduduk').removeClass().addClass('btn btn-md btn-primary col-md-6').text('Simpan');
+      $('#card-form').fadeIn();
+    });
+
+    $('#batal').on('click', function(){
+      $('#card-form').fadeOut();
+    });
+
+    $('.form-data').on('submit', function(e){
+      e.preventDefault();
+      var submit = true;
+
+      $(this).find('input[type="text"], input[type="number"], input[type="date"], select, textarea').each(function(){
+        if($(this).val() == ''){
+          submit = false;
+        }
+      });
+
+      if(submit == true){
+        $.ajax({
+          url: '<?= base_url().'admin/response_penduduk/' ?>'+save_method,
+          type: 'POST',
+          data: $(this).serialize(),
+          success: function(data){
+            if(data == 'berhasil')
+            {
+              alert(`Data penduduk berhasil di${save_method}`);
+              load_keterangan();
+              $('#card-form').fadeOut();
+            } else {
+              alert(`Data penduduk tidak berhasil di${save_method}`);
+            }
+          }
+        });
+      } else {
+        alert('Harap mengisi data dengan lengkap');
+      }
+
+    });
 
   });
 </script>
