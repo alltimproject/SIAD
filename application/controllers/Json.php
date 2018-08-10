@@ -28,6 +28,12 @@ class Json extends CI_Controller {
     echo json_encode($data);
   }
 
+  function json_kelahiran()
+  {
+    $data['kelahiran'] = $this->m_master->show_kelahiran(null, null)->result();
+    echo json_encode($data);
+  }
+
 }
 
 ?>

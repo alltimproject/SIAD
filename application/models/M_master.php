@@ -6,9 +6,11 @@
   {
     function show_kelahiran($where = null, $between = null)
     {
-      $this->db->select('a.komentar, b.nama_peserta');
-      $this->db->from('t_komentar a');
-      $this->db->join('t_peserta b', 'b.id_peserta = a.id_peserta', 'left');
+      $this->db->select('a.*, b.*, c.nama_penduduk as nama_ibu, d.nama_penduduk as nama_ayah');
+      $this->db->from('t_kelahiran a');
+      $this->db->join('t_penduduk b', 'b.id_penduduk = a.id_penduduk', 'left');
+      $this->db->join('t_penduduk c', 'c.id_penduduk = a.id_ibu', 'left');
+      $this->db->join('t_penduduk d', 'd.id_penduduk = a.id_ayah', 'left');
 
       if($where != null)
       {
@@ -32,6 +34,7 @@
 
       return $this->db->get();
     }
+
   }
 
 ?>
