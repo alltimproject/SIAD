@@ -137,6 +137,38 @@ class Admin extends CI_Controller {
     }
   }
 
+  function response_kelahiran($aksi)
+  {
+    switch ($aksi) {
+      case 'simpan':
+        $data = array(
+          'no_surat' => $this->input->post('no_surat'),
+          'id_penduduk' => $this->input->post('id_penduduk'),
+          'tgl_surat' => date('Y-m-d'),
+          'anak_ke' => $this->input->post('anak_ke'),
+          'hari' => $this->input->post('hari'),
+          'pukul' => $this->input->post('pukul'),
+          'id_ibu' => $this->input->post('id_ibu'),
+          'id_ayah' => $this->input->post('id_ayah'),
+          'input_by' => $this->session->userdata('username')
+        );
+
+        $cek = $this->m_main->add_data('t_kelahiran', $data);
+
+        if($cek)
+        {
+          echo "berhasil";
+        } else {
+          echo "gagal";
+        }
+      break;
+
+      default:
+        // code...
+      break;
+    }
+  }
+
 
 }
 
