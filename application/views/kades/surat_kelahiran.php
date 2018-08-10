@@ -34,3 +34,39 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  function load_kelahiran()
+  {
+    $.ajax({
+      url:'<?= base_url().'json/json_kelahiran' ?>',
+      type:'POST',
+      dataType:'JSON',
+      success:function(data)
+      {
+        var html = '';
+        if(data.kelahiran.length <=0 ){
+          html += '<tr><td colspan="7">Tidak ada data</td></tr>';
+        }else{
+          $.each(data.kelahiran, function(key, value) {
+            html += '<tr>'+
+                      '<td>'+value.no_surat+'</td>'+
+                      '<td>'+value.nama_penduduk+'</td>'+
+                      '<td>'+value.tgl_surat+'</td>'+
+                      '<td>'+value.anak_ke+'</td>'+
+                      '<td>'+value.nama_penduduk+'</td>'+
+                      '<td> </td>'+
+                      '<td> </td>'+
+                     '</tr>';
+          });
+        }
+        $('#t_kelahiran tbody').html(html);
+      }
+
+    });
+  }
+
+  $(document).ready(function(){
+    load_kelahiran();
+  });
+
+</script>

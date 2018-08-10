@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../../app-assets/images/ico/apple-icon-76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="../../app-assets/images/ico/apple-icon-120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="../../app-assets/images/ico/apple-icon-152.png">
-    <link rel="shortcut icon" type="image/x-icon" href="../../app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('images/logo111.png') ?>">
     <link rel="shortcut icon" type="image/png" href="../../app-assets/images/ico/favicon-32.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
@@ -45,7 +45,7 @@
         .back-cc {
             background: linear-gradient( rgba(0, 0, 0, 0.1),
             rgba(0, 0, 0, 0.1)),
-            url('<?= base_url().'images/bg-02.jpg' ?>');
+            url('<?= base_url().'images/bg-02.png' ?>');
             background-size: 100% 100%;
             position: relative;
 
@@ -60,7 +60,7 @@
         <div class="navbar-header">
           <ul class="nav navbar-nav">
             <li class="nav-item mobile-menu hidden-md-up float-xs-left"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a></li>
-            <li class="nav-item"><a href="index.html" class="navbar-brand nav-link"><img alt="branding logo" src="<?= base_url().'images/index.png' ?>" data-expand="<?= base_url().'images/index.png' ?>" data-collapse="<?= base_url().'images/index.png' ?>" class="brand-logo col-md-12 col-xs-12 col-sm-12"></a></li>
+            <li class="nav-item"><a href="index.html" class="navbar-brand nav-link"><center><img alt="branding logo" src="<?= base_url().'images/logo11.png' ?>" data-expand="<?= base_url().'images/logo11.png' ?>" data-collapse="<?= base_url().'images/logo11.png' ?>" class="text-center brand-logo col-md-12 col-xs-12 col-sm-12"></center></a></li>
             <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
           </ul>
         </div>
