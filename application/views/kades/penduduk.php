@@ -38,3 +38,50 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+function load_penduduk(cari)
+{
+  $.ajax({
+    url: '<?= base_url().'json/json_penduduk' ?>',
+    type: 'POST',
+    dataType: 'JSON',
+    data: {
+      cari: cari
+    },
+    success: function(data){
+      var html = '';
+
+      if(data.penduduk.length <= 0){
+        html += '<tr><td colspan="11">Tidak ada data</td></tr>';
+      } else {
+
+        $.each(data.penduduk, function(k, v){
+          html += `<tr>`;
+          html += `<td>${v.id_penduduk}</td>`;
+          html += `<td>${v.nama_penduduk}</td>`;
+          html += `<td>${v.tempat_lahir}, ${v.tgl_lahir}</td>`;
+          html += `<td>${v.jenis_kelamin}</td>`;
+          html += `<td>${v.agama}</td>`;
+          html += `<td>${v.alamat}</td>`;
+          html += `<td>${v.kelurahan}</td>`;
+          html += `<td>${v.kecamatan}</td>`;
+          html += `<td>${v.status}</td>`;
+          html += `<td>${v.pekerjaan}</td>`;
+          html += `<td>${v.kewarganegaraan}</td>`;
+          html += `</tr>`;
+        });
+      }
+
+      $('#t_penduduk tbody').html(html);
+    }
+  });
+}
+
+$(document).ready(function(){
+
+  load_penduduk();
+
+});
+</script>

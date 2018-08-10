@@ -9,7 +9,6 @@ class Ket_lahir extends CI_Controller{
     $this->load->library('pdf');
     //Codeigniter : Write Less Do More
   }
-
   function index()
     {
       $pdf = new FPDF('P','mm','A4');
@@ -20,14 +19,10 @@ class Ket_lahir extends CI_Controller{
       $pdf->ln(35);
       $pdf->SetFont('Arial','B',16);
       $pdf->Cell(498,0,'SURAT KETERANGAN KELAHIRAN','C',5);
-
-
       $pdf->Output();
     }
-
     function gaji()
     {
-
       $pdf = new FPDF('p','mm','A4');
       // membuat halaman baru
       $pdf->AddPage();
@@ -35,11 +30,6 @@ class Ket_lahir extends CI_Controller{
       $pdf->image('images/kopsurat.png',6,7,200) ;
       $pdf->Ln(37);
       $pdf->Cell(190,0,'KETERANGAN KELAHIRAN ',1,1,'C',1);
-
-
-
       $pdf->Output();
-
-
   }
   }
