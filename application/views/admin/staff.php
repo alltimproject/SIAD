@@ -1,15 +1,82 @@
 <div class="content-header row">
-  <div class="content-header-left col-md-6 col-xs-12 mb-1">
+  <div class="content-header-left col-md-6 col-xs-6 mb-1">
     <h2 class="content-header-title">Staff</h2>
   </div>
-  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-12">
+  <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-6">
     <div class="breadcrumb-wrapper col-xs-12">
-
+      <button type="button" id="simpan" class="btn btn-md btn-primary" style="float: right">Tambah</button>
     </div>
   </div>
 </div>
 
 <div class="content-body">
+
+  <div class="card" id="card-form">
+    <div class="card-header">
+      <h4 class="card-title">Form Staff</h4>
+    </div>
+    <div class="card-body">
+      <div class="card-block">
+        <form class="form-data">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nip">NIP</label>
+                <input type="number" name="nip" id="nip" class="form-control border-primary">
+              </div>
+              <div class="form-group">
+                <label for="nama_staff">Nama</label>
+                <input type="text" name="nama_staff" id="nama_staff" class="form-control border-primary">
+              </div>
+              <div class="form-group">
+                <label for="tempat_lahir">Tempat Lahir</label>
+                <input type="text" name="tempat_lahir" id="tempat_lahir" class="form-control border-primary">
+              </div>
+              <div class="form-group">
+                <label for="tgl_lahir">Tanggal Lahir</label>
+                <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control border-primary">
+              </div>
+              <div class="form-group">
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <select class="form-control border-primary" name="jenis_kelamin" id="jenis_kelamin">
+                  <option value=""></option>
+                  <option value="Laki-laki">Laki-laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <textarea name="alamat" id="alamat" class="form-control border-primary"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="no_tlp">No Telepon</label>
+                <input type="number" name="no_tlp" id="no_tlp" class="form-control border-primary">
+              </div>
+              <div class="form-group">
+                <label for="jabatan">Jabatan</label>
+                <input type="text" name="jabatan" id="jabatan" class="form-control border-primary">
+              </div>
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control border-primary" name="status" id="status">
+                  <option value=""></option>
+                  <option value="Aktif">Aktif</option>
+                  <option value="Tidak Aktif">Tidak Aktif</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" id="submit_staff" class=""></button>
+                <button type="button" id="batal" class="btn btn-danger btn-md col-md-6">Batal</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <div class="card">
     <div class="card-header">
       <h4 class="card-title">Data Staff</h4>
@@ -73,8 +140,53 @@
   }
 
   $(document).ready(function(){
+    var save_method;
 
     load_staff();
+    $('#card-form').hide();
+
+    $('#simpan').on('click', function(){
+      save_method = 'simpan';
+      $('.form-data')[0].reset();
+      $('#nip').focus();
+      $('#submit_staff').removeClass().addClass('btn btn-md btn-primary col-md-6').text('Simpan');
+      $('#card-form').fadeIn();
+    });
+
+    $('#batal').on('click', function(){
+      $('#card-form').fadeOut();
+    });
+
+    $('.form-data').on('submit', function(e){
+      e.preventDefault();
+      var submit = true;
+
+      $(this).find('input[type="text"], input[type="number"], input[type="date"], select, textarea').each(function(){
+        if($(this).val() == ''){
+          submit = false;
+        }
+      });
+
+      if(submit == true){
+        $.ajax({
+          url: '<?= base_url().'admin/response_staff/' ?>'+save_method,
+          type: 'POST',
+          data: $(this).serialize(),
+          success: function(data){
+            if(data == 'berhasil')
+            {
+              alert(`Data staff berhasil di${save_method}`);
+              load_staff();
+              $('#card-form').fadeOut();
+            } else {
+              alert(`Data staff tidak berhasil di${save_method}`);
+            }
+          }
+        });
+      } else {
+        alert('Harap mengisi data dengan lengkap');
+      }
+    });
 
   });
 </script>
