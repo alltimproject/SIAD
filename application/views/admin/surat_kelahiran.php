@@ -94,6 +94,7 @@
         <table class="table" id="t_kelahiran" style="font-size: 11px">
           <thead class="bg-purple" style="color: white;">
             <tr>
+              <th><span class="fa fa-print fa-2x"></span></th>
               <th>No Surat</th>
               <th>Nama</th>
               <th>Tanggal</th>
@@ -249,6 +250,7 @@
 
           $.each(data.kelahiran, function(k, v){
             html += `<tr>`;
+            html += `<td><a class="btn btn-info btn-sm" href="<?= base_url('laporan/Ket_lahir?no_surat=') ?>${v.no_surat}" target="_blank">print</a> </td>`;
             html += `<td>${v.no_surat}</td>`;
             html += `<td>${v.nama_penduduk}</td>`;
             html += `<td>${v.tgl_surat}</td>`;

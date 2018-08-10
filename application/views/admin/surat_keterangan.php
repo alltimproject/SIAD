@@ -61,6 +61,7 @@
         <table class="table" id="t_keterangan" style="font-size: 11px">
           <thead class="bg-purple" style="color: white;">
             <tr>
+              <th></th>
               <th>No Surat</th>
               <th>Nama Penduduk</th>
               <th>Tanggal</th>
@@ -134,6 +135,7 @@
 
           $.each(data.keterangan, function(k, v){
             html += `<tr>`;
+            html += `<td><a target="_blank" class="btn btn-info btn-sm" href="<?= base_url('laporan/surat_ket?no_surat=') ?>${v.no_surat}">PRINT </a> </td>`;
             html += `<td>${v.no_surat}</td>`;
             html += `<td>${v.nama_penduduk}</td>`;
             html += `<td>${v.tgl_surat}</td>`;

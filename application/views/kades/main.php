@@ -55,12 +55,12 @@
   <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="vertical-layout vertical-menu 2-columns  fixed-navbar back-cc">
 
     <!-- navbar-fixed-top-->
-    <nav class="header-navbar navbar navbar-with-menu navbar-fixed-top navbar-semi-dark navbar-shadow">
+    <nav class="header-navbar navbar navbar-with-menu navbar-fixed-top navbar-light navbar-shadow">
       <div class="navbar-wrapper">
         <div class="navbar-header">
           <ul class="nav navbar-nav">
             <li class="nav-item mobile-menu hidden-md-up float-xs-left"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a></li>
-            <li class="nav-item"><a href="index.html" class="navbar-brand nav-link"><center><img alt="branding logo" src="<?= base_url().'images/logo11.png' ?>" data-expand="<?= base_url().'images/logo11.png' ?>" data-collapse="<?= base_url().'images/logo11.png' ?>" class="text-center brand-logo col-md-12 col-xs-12 col-sm-12"></center></a></li>
+            <li class="nav-item"><a href="index.html" class="navbar-brand nav-link"><center><img alt="branding logo" src="<?= base_url().'images/menulogo.png' ?>" data-expand="<?= base_url().'images/menulogo.png' ?>" data-collapse="<?= base_url().'images/menulogo.png' ?>" class="text-center brand-logo col-md-12 col-xs-12 col-sm-12"></center></a></li>
             <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
           </ul>
         </div>
@@ -89,7 +89,7 @@
 
 
     <!-- main menu-->
-    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow">
+    <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow">
       <div class="main-menu-header">
         <input type="text" placeholder="Search" class="menu-search form-control round"/>
       </div>

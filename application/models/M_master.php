@@ -6,7 +6,8 @@
   {
     function show_kelahiran($where = null, $between = null)
     {
-      $this->db->select('a.*, b.*, c.nama_penduduk as nama_ibu, d.nama_penduduk as nama_ayah, e.username');
+      $this->db->select('a.*, b.*, c.nama_penduduk as nama_ibu, c.tempat_lahir as tempat_lhr_ibu, c.tgl_lahir as tgl_lahir_ibu, c.pekerjaan as peker_ibu, c.agama as agama_ibu, c.alamat as alamat_ibu, d.nama_penduduk as nama_ayah, d.agama as agama_ayah, d.tgl_lahir as tgl_lahir_ayah, d.pekerjaan as peker_ayah, d.alamat as alamat_ayah, e.username');
+      $this->db->select('(select nama_staff from t_staff where jabatan = "Kades" and status = "Aktif") as data_staff  ');
       $this->db->from('t_kelahiran a');
       $this->db->join('t_penduduk b', 'b.id_penduduk = a.id_penduduk', 'left');
       $this->db->join('t_penduduk c', 'c.id_penduduk = a.id_ibu', 'left');
