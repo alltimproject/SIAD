@@ -204,7 +204,7 @@
             if(data == 'berhasil')
             {
               alert(`Data penduduk berhasil di${save_method}`);
-              load_keterangan();
+              load_penduduk();
               $('#card-form').fadeOut();
             } else {
               alert(`Data penduduk tidak berhasil di${save_method}`);
