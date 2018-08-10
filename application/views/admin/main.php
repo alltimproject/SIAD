@@ -45,7 +45,7 @@
         .back-cc {
             background: linear-gradient( rgba(0, 0, 0, 0.1),
             rgba(0, 0, 0, 0.1)),
-            url('<?= base_url().'images/bg-02.jpg' ?>');
+            url('<?= base_url().'images/bg-02.png' ?>');
             background-size: 100% 100%;
             position: relative;
 
