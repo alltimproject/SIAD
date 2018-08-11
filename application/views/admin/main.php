@@ -60,7 +60,7 @@
         <div class="navbar-header">
           <ul class="nav navbar-nav">
             <li class="nav-item mobile-menu hidden-md-up float-xs-left"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a></li>
-            <li class="nav-item"><a href="index.html" class="navbar-brand nav-link"><img alt="branding logo" src="<?= base_url().'images/logo111.png' ?>" data-expand="<?= base_url().'images/menulogo.png' ?>" data-collapse="<?= base_url().'images/logo111.png' ?>" class="brand-logo col-md-12 col-xs-12 col-sm-12"></a></li>
+            <li class="nav-item"><a href="index.html" class="navbar-brand nav-link"><img alt="branding logo" src="<?= base_url().'images/menulogo.png' ?>" data-expand="<?= base_url().'images/menulogo.png' ?>" data-collapse="<?= base_url().'images/menulogo.png' ?>" class="brand-logo col-md-12 col-xs-12 col-sm-12"></a></li>
             <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
           </ul>
         </div>
@@ -144,8 +144,10 @@
     <script src="<?= base_url().'assets/app-assets/vendors/js/ui/screenfull.min.js' ?>" type="text/javascript"></script>
     <script src="<?= base_url().'assets/app-assets/vendors/js/extensions/pace.min.js' ?>" type="text/javascript"></script>
     <script src="<?= base_url().'assets/app-assets/vendors/toastr/build/toastr.min.js' ?>" type="text/javascript"></script>
+    <script src="<?= base_url().'assets/app-assets/vendors/js/charts/chart.min.js' ?>" type="text/javascript"></script>
     <script src="<?= base_url().'assets/app-assets/js/core/app-menu.js' ?>" type="text/javascript"></script>
     <script src="<?= base_url().'assets/app-assets/js/core/app.js' ?>" type="text/javascript"></script>
+
     <script type="text/javascript">
       $(document).ready(function(){
         var load_content = function(href) {
@@ -171,6 +173,8 @@
   					"positionClass": "toast-bottom-right",
   					"preventDuplicates": true
   			}
+
+
       });
     </script>
   </body>

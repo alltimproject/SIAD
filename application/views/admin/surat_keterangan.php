@@ -57,6 +57,17 @@
       <h4 class="card-title">Data Surat Keterangan</h4>
     </div>
     <div class="card-body">
+      <div class="card-block" style="margin-bottom: 0px; padding-bottom: 5px;">
+        <div class="form-group">
+          <div class="position-relative has-icon-left">
+            <input type="text" class="form-control" placeholder="Masukkan No Surat" name="cari" id="cari">
+              <div class="form-control-position">
+                <i class="icon-search4"></i>
+              </div>
+          </div>
+        </div>
+      </div>
+
       <div class="table-responsive" style="height: 400px;">
         <table class="table" id="t_keterangan" style="font-size: 11px">
           <thead class="bg-purple" style="color: white;">
@@ -67,7 +78,7 @@
               <th>Tanggal</th>
               <th>Keterangan</th>
               <th>Perihal</th>
-              <th>Admin</th>
+              <th>Input By</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -91,7 +102,7 @@
                           <div class="position-relative has-icon-left">
         										<input type="text" id="cari-pddk" class="form-control" placeholder="Cari ID atau Nama" name="cari-pddk">
         										<div class="form-control-position">
-        											<i class="icon-briefcase4"></i>
+        											<i class="icon-search4"></i>
         										</div>
         									</div>
                         </div>
@@ -135,7 +146,7 @@
 
           $.each(data.keterangan, function(k, v){
             html += `<tr>`;
-            html += `<td><a target="_blank" class="btn btn-info btn-sm" href="<?= base_url('laporan/surat_ket?no_surat=') ?>${v.no_surat}">PRINT </a> </td>`;
+            html += `<td><a target="_blank" class="btn btn-info btn-sm" href="<?= base_url('laporan/surat_ket?no_surat=') ?>${v.no_surat}"><i class="icon-printer3"></i> PRINT </a> </td>`;
             html += `<td>${v.no_surat}</td>`;
             html += `<td>${v.nama_penduduk}</td>`;
             html += `<td>${v.tgl_surat}</td>`;
@@ -190,8 +201,12 @@
     var save_method;
 
     load_keterangan();
-    load_penduduk();
     $('#card-form').hide();
+
+    $('#cari').on('keyup', function(){
+      var cari = $(this).val();
+      load_keterangan(cari);
+    });
 
     $('#simpan').on('click', function(){
       save_method = 'simpan';
@@ -206,6 +221,7 @@
     });
 
     $('#lookup-pddk').on('click', function(){
+      load_penduduk();
       $('#modal-pddk').modal('show');
     });
 

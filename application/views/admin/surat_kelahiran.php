@@ -39,7 +39,7 @@
                 <input type="number" name="anak_ke" id="anak_ke" class="form-control border-primary">
               </div>
               <div class="form-group">
-                <label for="hari"></label>
+                <label for="hari">Hari</label>
                 <select name="hari" id="hari" class="form-control border-primary">
                   <option value=""></option>
                   <option value="Senin">Senin</option>
@@ -90,18 +90,29 @@
       <h4 class="card-title">Data Surat Kelahiran</h4>
     </div>
     <div class="card-body">
+      <div class="card-block" style="margin-bottom: 0px; padding-bottom: 5px;">
+        <div class="form-group">
+          <div class="position-relative has-icon-left">
+            <input type="text" class="form-control" placeholder="Masukkan No Surat" name="cari" id="cari">
+              <div class="form-control-position">
+                <i class="icon-search4"></i>
+              </div>
+          </div>
+        </div>
+      </div>
+
       <div class="table-responsive" style="height: 400px;">
         <table class="table" id="t_kelahiran" style="font-size: 11px">
           <thead class="bg-purple" style="color: white;">
             <tr>
-              <th><span class="fa fa-print fa-2x"></span></th>
+              <th></th>
               <th>No Surat</th>
               <th>Nama</th>
               <th>Tanggal</th>
               <th>Anak ke</th>
               <th>Nama Ibu</th>
               <th>Nama Ayah</th>
-              <th>Admin</th>
+              <th>Input By</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -163,7 +174,7 @@
                   										  <div class="modal-body">
                                           <div class="form-group">
                                             <div class="position-relative has-icon-left">
-                          										<input type="text" id="cari-pddk" class="form-control" placeholder="Cari ID atau Nama" name="cari-pddk">
+                          										<input type="text" id="cari-ibu" class="form-control" placeholder="Cari ID atau Nama" name="cari-ibu">
                           										<div class="form-control-position">
                           											<i class="icon-briefcase4"></i>
                           										</div>
@@ -203,7 +214,7 @@
                                     										  <div class="modal-body">
                                                             <div class="form-group">
                                                               <div class="position-relative has-icon-left">
-                                            										<input type="text" id="cari-pddk" class="form-control" placeholder="Cari ID atau Nama" name="cari-pddk">
+                                            										<input type="text" id="cari-ayah" class="form-control" placeholder="Cari ID atau Nama" name="cari-ayah">
                                             										<div class="form-control-position">
                                             											<i class="icon-briefcase4"></i>
                                             										</div>
@@ -245,12 +256,12 @@
         var html = '';
 
         if(data.kelahiran.length <= 0){
-          html += '<tr><td colspan="7">Tidak ada data</td></tr>';
+          html += '<tr><td colspan="8">Tidak ada data</td></tr>';
         } else {
 
           $.each(data.kelahiran, function(k, v){
             html += `<tr>`;
-            html += `<td><a class="btn btn-info btn-sm" href="<?= base_url('laporan/Ket_lahir?no_surat=') ?>${v.no_surat}" target="_blank">print</a> </td>`;
+            html += `<td><a class="btn btn-info btn-sm" href="<?= base_url('laporan/Ket_lahir?no_surat=') ?>${v.no_surat}" target="_blank"><i class="icon-printer3"></i> PRINT</a> </td>`;
             html += `<td>${v.no_surat}</td>`;
             html += `<td>${v.nama_penduduk}</td>`;
             html += `<td>${v.tgl_surat}</td>`;
@@ -282,7 +293,9 @@
         var html_ayah = '';
 
         if(data.penduduk.length <= 0){
-          html += '<tr><td colspan="11">Tidak ada data</td></tr>';
+          html_ibu += '<tr><td colspan="8">Tidak ada data</td></tr>';
+          html_ayah += '<tr><td colspan="8">Tidak ada data</td></tr>';
+          html += '<tr><td colspan="8">Tidak ada data</td></tr>';
         } else {
 
           $.each(data.penduduk, function(k, v){
@@ -339,7 +352,6 @@
     var save_method;
 
     load_kelahiran();
-    load_penduduk();
     $('#card-form').hide();
 
     $('#simpan').on('click', function(){
@@ -355,14 +367,32 @@
     });
 
     $('#lookup-pddk').on('click', function(){
+      load_penduduk();
       $('#modal-pddk').modal('show');
     });
 
+    $('#cari-pddk').keyup(function(){
+      var cari = $(this).val();
+      load_penduduk(cari);
+    });
+
+    $('#cari-ibu').keyup(function(){
+      var cari = $(this).val();
+      load_penduduk(cari);
+    });
+
+    $('#cari-ayah').keyup(function(){
+      var cari = $(this).val();
+      load_penduduk(cari);
+    });
+
     $('#lookup-ibu').on('click', function(){
+      load_penduduk();
       $('#modal-ibu').modal('show');
     });
 
     $('#lookup-ayah').on('click', function(){
+      load_penduduk();
       $('#modal-ayah').modal('show');
     });
 
@@ -382,6 +412,11 @@
       var id = $(this).data('id');
       $('#id_ayah').val(id);
       $('#modal-ayah').modal('hide');
+    });
+
+    $('#cari').on('keyup', function(){
+      var cari = $(this).val();
+      load_kelahiran(cari);
     });
 
     $('.form-data').on('submit', function(e){

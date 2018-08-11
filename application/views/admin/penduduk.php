@@ -104,6 +104,17 @@
       <h4 class="card-title">Data Penduduk</h4>
     </div>
     <div class="card-body">
+
+      <div class="card-block" style="margin-bottom: 0px; padding-bottom: 5px;">
+        <div class="form-group">
+          <div class="position-relative has-icon-left">
+            <input type="text" class="form-control" placeholder="Masukkan Nama atau ID Penduduk" name="cari" id="cari">
+              <div class="form-control-position">
+                <i class="icon-search4"></i>
+              </div>
+          </div>
+        </div>
+      </div>
       <div class="table-responsive" style="height: 400px;">
         <table class="table" id="t_penduduk" style="font-size: 11px">
           <thead class="bg-purple" style="color: white;">
@@ -173,6 +184,11 @@
     load_penduduk();
     $('#card-form').hide();
 
+    $('#cari').on('keyup', function(){
+      var cari = $(this).val();
+      load_penduduk(cari);
+    });
+
     $('#simpan').on('click', function(){
       save_method = 'simpan';
       $('.form-data')[0].reset();
@@ -214,7 +230,6 @@
       } else {
         alert('Harap mengisi data dengan lengkap');
       }
-
     });
 
   });

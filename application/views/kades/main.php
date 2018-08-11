@@ -141,6 +141,7 @@
     <script src="<?= base_url().'assets/app-assets/vendors/js/ui/screenfull.min.js' ?>" type="text/javascript"></script>
     <script src="<?= base_url().'assets/app-assets/vendors/js/extensions/pace.min.js' ?>" type="text/javascript"></script>
     <script src="<?= base_url().'assets/app-assets/vendors/toastr/build/toastr.min.js' ?>" type="text/javascript"></script>
+    <script src="<?= base_url().'assets/app-assets/vendors/js/charts/chart.min.js' ?>" type="text/javascript"></script>
     <script src="<?= base_url().'assets/app-assets/js/core/app-menu.js' ?>" type="text/javascript"></script>
     <script src="<?= base_url().'assets/app-assets/js/core/app.js' ?>" type="text/javascript"></script>
     <script type="text/javascript">

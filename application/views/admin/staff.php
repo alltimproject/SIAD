@@ -82,6 +82,17 @@
       <h4 class="card-title">Data Staff</h4>
     </div>
     <div class="card-body">
+      <div class="card-block" style="margin-bottom: 0px; padding-bottom: 5px;">
+        <div class="form-group">
+          <div class="position-relative has-icon-left">
+            <input type="text" class="form-control" placeholder="Masukkan NIP atau Nama Staff" name="cari" id="cari">
+              <div class="form-control-position">
+                <i class="icon-search4"></i>
+              </div>
+          </div>
+        </div>
+      </div>
+
       <div class="table-responsive" style="height: 400px;">
         <table class="table" id="t_staff" style="font-size: 11px">
           <thead class="bg-purple" style="color: white;">
@@ -151,6 +162,12 @@
       $('#nip').focus();
       $('#submit_staff').removeClass().addClass('btn btn-md btn-primary col-md-6').text('Simpan');
       $('#card-form').fadeIn();
+    });
+
+    $('#cari').on('keyup', function(){
+      var cari = $(this).val();
+      load_staff(cari);
+      // alert('Successs');
     });
 
     $('#batal').on('click', function(){

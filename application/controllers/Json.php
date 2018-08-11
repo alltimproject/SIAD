@@ -12,25 +12,67 @@ class Json extends CI_Controller {
 
   function json_penduduk()
   {
-    $data['penduduk'] = $this->m_main->select('t_penduduk', null)->result();
+    $cari = $this->input->post('cari');
+
+    if(isset($cari))
+    {
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
+    $data['penduduk'] = $this->m_master->show_penduduk(null, $like)->result();
     echo json_encode($data);
   }
 
   function json_staff()
   {
-    $data['staff'] = $this->m_main->select('t_staff', null)->result();
+    $cari = $this->input->post('cari');
+
+    if(isset($cari))
+    {
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
+    $data['staff'] = $this->m_master->show_staff(null, $like)->result();
     echo json_encode($data);
   }
 
   function json_keterangan()
   {
-    $data['keterangan'] = $this->m_master->show_keterangan(null, null)->result();
+    $cari = $this->input->post('cari');
+
+    if(isset($cari))
+    {
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
+    $data['keterangan'] = $this->m_master->show_keterangan(null, null, $like)->result();
     echo json_encode($data);
   }
 
   function json_kelahiran()
   {
-    $data['kelahiran'] = $this->m_master->show_kelahiran(null, null)->result();
+    $cari = $this->input->post('cari');
+
+    if(isset($cari))
+    {
+      $like = $cari;
+    } else {
+      $like = null;
+    }
+
+    $data['kelahiran'] = $this->m_master->show_kelahiran(null, null, $like)->result();
+    echo json_encode($data);
+  }
+
+  function json_dashboard()
+  {
+    $data['dashboard'] = $this->m_master->show_dashboard(null)->result();
     echo json_encode($data);
   }
 
