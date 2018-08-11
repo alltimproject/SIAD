@@ -127,7 +127,7 @@ class Ket_lahir extends CI_Controller{
 
       }
       $pdf->Output();
-
-
     }
+
+
   }
