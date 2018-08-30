@@ -105,6 +105,7 @@
               <th>No Telepon</th>
               <th>Jabatan</th>
               <th>Status</th>
+              <th></th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -128,7 +129,7 @@
         var html = '';
 
         if(data.staff.length <= 0){
-          html += '<tr><td colspan="8">Tidak ada data</td></tr>';
+          html += '<tr><td colspan="9">Tidak ada data</td></tr>';
         } else {
 
           $.each(data.staff, function(k, v){
@@ -141,6 +142,7 @@
             html += `<td>${v.no_tlp}</td>`;
             html += `<td>${v.jabatan}</td>`;
             html += `<td>${v.status}</td>`;
+            html += `<td><button class="btn btn-sm btn-success" id="edit" data-nip="${v.nip}" data-nama="${v.nama_staff}" data-tempat="${v.tempat_lahir}" data-tgl="${v.tgl_lahir}" data-alamat="${v.alamat}" data-jkel="${v.jenis_kelamin}" data-tlp="${v.no_tlp}" data-jab="${v.jabatan}" data-sts="${v.status}"><i class="icon-pencil2"></i></button></td>`;
             html += `</tr>`;
           });
         }
@@ -163,6 +165,36 @@
       $('#submit_staff').removeClass().addClass('btn btn-md btn-primary col-md-6').text('Simpan');
       $('#card-form').fadeIn();
       $(this).hide();
+    });
+
+    $('#t_staff').on('click', '#edit' ,function(){
+      save_method = 'edit';
+      var nip = $(this).attr('data-nip');
+      var nama = $(this).attr('data-nama');
+      var tempat_lahir = $(this).attr('data-tempat');
+      var tgl_lahir = $(this).attr('data-tgl');
+      var alamat = $(this).attr('data-alamat');
+      var jenis_kelamin = $(this).attr('data-jkel');
+      var no_telp = $(this).attr('data-tlp');
+      var jabatan = $(this).attr('data-jab');
+      var status= $(this).attr('data-sts');
+
+      $('#nip').val(nip);
+      $('#nama_staff').val(nama);
+      $('#tempat_lahir').val(tempat_lahir);
+      $('#tgl_lahir').val(tgl_lahir);
+      $('#alamat').val(alamat);
+      $('#jenis_kelamin').val(jenis_kelamin);
+      $('#no_tlp').val(no_telp);
+      $('#jabatan').val(jabatan);
+      $('#status').val(status);
+
+
+      $('#card-form').fadeIn();
+      $('#nip').focus();
+      $('#submit_staff').removeClass().addClass('btn btn-md btn-success col-md-6').text('Update');
+
+
     });
 
     $('#cari').on('keyup', function(){
