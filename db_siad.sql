@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 10, 2018 at 04:07 AM
+-- Generation Time: Aug 30, 2018 at 05:16 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.35
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `t_kelahiran` (
   `no_surat` varchar(20) NOT NULL,
   `id_penduduk` bigint(20) NOT NULL,
-  `tgl_surat` datetime NOT NULL,
+  `tgl_surat` date NOT NULL,
   `anak_ke` int(2) NOT NULL,
   `hari` varchar(10) NOT NULL,
   `pukul` varchar(5) NOT NULL,
@@ -45,7 +45,9 @@ CREATE TABLE `t_kelahiran` (
 --
 
 INSERT INTO `t_kelahiran` (`no_surat`, `id_penduduk`, `tgl_surat`, `anak_ke`, `hari`, `pukul`, `id_ibu`, `id_ayah`, `input_by`) VALUES
-('009-2018-001', 3171020803940002, '2018-08-10 00:00:00', 3, 'Senin', '10', 3173041010920016, 3301051307970004, 'admin');
+('002/XI/2018', 1367318650115691, '2018-08-11', 2, 'Selasa', '08:50', 31257815618365913, 3173041010920016, 'admin'),
+('009-2018-001', 3171020803940002, '2018-08-10', 3, 'Senin', '10', 3173041010920016, 3301051307970004, 'admin'),
+('009/VII/2018', 32153151932679247, '2018-08-10', 1, 'Senin', '18:00', 3171635981365891, 3173041010920016, 'admin');
 
 -- --------------------------------------------------------
 
@@ -61,6 +63,16 @@ CREATE TABLE `t_keterangan` (
   `keterangan` varchar(30) NOT NULL,
   `input_by` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_keterangan`
+--
+
+INSERT INTO `t_keterangan` (`no_surat`, `id_penduduk`, `tgl_surat`, `perihal`, `keterangan`, `input_by`) VALUES
+('009/VII/2018', 3171635981365891, '2018-08-10', 'Test', 'Test', 'admin'),
+('12312321', 3173040705000006, '2018-08-10', 'Coba', 'Coba', 'admin'),
+('12756031671', 3173041010920016, '2018-08-10', 'Coba', 'Coba', 'admin'),
+('Test', 31257815618365913, '2018-08-10', 'Test', 'Test', 'admin');
 
 -- --------------------------------------------------------
 
@@ -88,10 +100,15 @@ CREATE TABLE `t_penduduk` (
 --
 
 INSERT INTO `t_penduduk` (`id_penduduk`, `nama_penduduk`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `alamat`, `kelurahan`, `kecamatan`, `status`, `pekerjaan`, `kewarganegaraan`) VALUES
-(3171020803940002, 'Muhammad Zacky Ramadhan', 'Jakarta', '1994-03-08', 'Laki - Laki', 'Belum Menikah', 'Jl. Pisangan Batu', 'Mangga Dua Selatan', 'Sawah Besar', 'Islam', 'Pelajar', 'WNI'),
-(3173041010920016, 'Haviz Indra Maulana', 'Jakarta', '1992-10-10', 'Laki - Laki', 'Islam', 'GG.Vanilly No.19F', 'Tanah Sereal', 'Tambora', 'Menikah', 'Mahasiswa', 'WNI'),
-(3174010310970002, 'Muhamad Rizky', 'Jakarta', '1997-10-03', 'Laki - Laki', 'Islam', 'Jl. Kp Melayu Kecil 1 No 85', 'Bukit Duri', 'Tebet', 'Belum Menikah', 'PNS', 'WNI'),
-(3301051307970004, 'Yugi Setiawan', 'Cilacap', '1997-07-13', 'Laki - Laki', 'Islam', 'Jl. Pejompongan Dalam No.2A', 'Bendungan Hilir', 'Tanah Abang', 'Belum Menikah', 'Karywan Swasta', 'WNI');
+(1367318650115691, 'Kalyssa Innara Putri', 'Jakarta', '2018-08-07', 'Perempuan', 'Islam', 'Jakarta', 'Tanah Sereal', 'Tambora', 'Belum Menikah', 'Karyawan', 'WNI'),
+(3171020803940002, 'Muhammad Zacky Ramadhan', 'Jakarta', '1994-03-08', 'Laki-laki', 'Belum Menikah', 'Jl. Pisangan Batu', 'Mangga Dua Selatan', 'Sawah Besar', 'Islam', 'Pelajar', 'WNI'),
+(3171635981365891, 'Tiara', 'Jakarta', '2018-08-15', 'Perempuan', 'Islam', 'Jakarta', 'Tanah Sereal', 'Tambora', 'Menikah', 'Ibu Rumah Tangga', 'WNI'),
+(3173040705000006, 'Tezar Tri Handika', 'Jakarta', '2000-05-07', 'Laki-laki', 'Islam', 'Jl. Gg. Vanilli No.19f Rt.010 Rw.05', 'Tanah Sereal', 'Tambora', 'Belum Menikah', 'Pelajar', 'WNI'),
+(3173041010920016, 'Haviz Indra Maulana', 'Jakarta', '1992-10-10', 'Laki-laki', 'Islam', 'GG.Vanilly No.19F', 'Tanah Sereal', 'Tambora', 'Menikah', 'Mahasiswa', 'WNI'),
+(3174010310970002, 'Muhamad Rizky', 'Jakarta', '1997-10-03', 'Laki-laki', 'Islam', 'Jl. Kp Melayu Kecil 1 No 85', 'Bukit Duri', 'Tebet', 'Belum Menikah', 'PNS', 'WNI'),
+(3301051307970004, 'Yugi Setiawan', 'Cilacap', '1997-07-13', 'Laki-laki', 'Islam', 'Jl. Pejompongan Dalam No.2A', 'Bendungan Hilir', 'Tanah Abang', 'Belum Menikah', 'Karywan Swasta', 'WNI'),
+(31257815618365913, 'Dian Ratna Sari', 'Jakarta', '1995-11-27', 'Perempuan', 'Islam', 'Jakarta', 'Tanah Sereal', 'Tambora', 'Menikah', 'Karyawan Swasta', 'WNI'),
+(32153151932679247, 'Devan Dirgantara Putra', 'Jakarta', '2018-08-07', 'Laki-laki', 'Islam', 'Jakarta', 'Tanah Sereal', 'Tambora', 'Belum Menikah', 'Belum Bekerja', 'WNI');
 
 -- --------------------------------------------------------
 
@@ -117,7 +134,10 @@ CREATE TABLE `t_staff` (
 
 INSERT INTO `t_staff` (`nip`, `nama_staff`, `tempat_lahir`, `tgl_lahir`, `alamat`, `jenis_kelamin`, `no_tlp`, `jabatan`, `status`) VALUES
 ('001', 'Muhamad Rizky', 'Jakarta', '1997-10-03', 'Jl. MElayu Kecil 1 No. 85', 'Laki-Laki', '081807135596', 'Staff', 'Aktif'),
-('002', 'Indra Brawijaya', 'Bogor', '1980-10-10', 'Bojong Gede', 'Laki-laki', '08123412512', 'Kades', 'Aktif');
+('002', 'Indra Brawijaya', 'Bogor', '1980-10-10', 'Bojong Gede', 'Laki-laki', '08123412512', 'Kades', 'Aktif'),
+('003', 'Dian Ratna Sari', 'Jakarta', '2018-08-10', 'Jakarta', 'Perempuan', '081355754092', 'Staff', 'Aktif'),
+('123123', 'Haviz Indra Maulana', 'Jakarta', '2018-08-10', 'Jakarta', 'Laki-laki', '081355754092', 'Analyst', 'Aktif'),
+('1513513513', 'Tezar Tri Handika', 'Jakarta', '2018-08-10', 'Jakarta', 'Laki-laki', '081355754092', 'Staff', 'Aktif');
 
 -- --------------------------------------------------------
 
