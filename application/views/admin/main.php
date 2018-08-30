@@ -74,8 +74,8 @@
               <li class="dropdown dropdown-user nav-item">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="<?= base_url().'images/logo-small.png' ?>" alt="avatar"><i></i></span><span class="user-name"><?= $this->session->userdata('username') ?></span></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a href="#" class="dropdown-item"><i class="icon-lock"></i> Ganti Password</a>
-                  <div class="dropdown-divider"></div><a id="tentang" class="dropdown-item"><i class="icon-compass22"></i> Tentang</a>
+                  <a class="dropdown-item" data-toggle="modal" data-target="#small"><i class="icon-lock"></i> Ganti Password</a>
+                  <div class="dropdown-divider"></div><a id="tentang" class="dropdown-item" data-toggle="modal" data-target="#default"><i class="icon-compass22"></i> Tentang</a>
                   <div class="dropdown-divider"></div><a href="<?= base_url().'auth/logout' ?>" class="dropdown-item"><i class="icon-power3"></i> Logout</a>
                 </div>
               </li>
@@ -128,10 +128,65 @@
     </div>
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
+    <div class="modal fade text-xs-left" id="default" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+									  <div class="modal-dialog" role="document">
+										<div class="modal-content">
+										  <div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											  <span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title" id="myModalLabel1">Tentang</h4>
+										  </div>
+										  <div class="modal-body col-md-6" style="background: url('<?= base_url().'images/bg-031.jpg' ?>'); height: 400px; background-size: cover;"></div>
+                      <div class="modal-body col-md-6" style="height: 400px; background-color: white;">
+                        <h4><center><b>SISTEM INFORMASI ADMINISTRASI DESA</b></center></h4><br><br>
+                        <div class="card-block">
+                          <p>Aplikasi ini dibangun dalam rangka Program Pemeberdayaan Masyarakat Mahasiswa (PPM) Jurusan Sistem Informasi, Universitas Bung Karno pada tahun 2017 di Desa Bojonggede.
+                             Dilarang menggunakan aplikasi ini tanpa izin dari Tim Developer Aplikasi terlebih dahulu untuk tujuan komersil
+                          </p>
+                        </div>
+										  </div>
+										</div>
+									  </div>
+									</div>
 
-    <!-- <footer class="footer footer-static footer-light navbar-border">
-      <p class="clearfix text-muted text-sm-center mb-0 px-2"><span class="float-md-left d-xs-block d-md-inline-block">Copyright  &copy; 2017 <a href="https://themeforest.net/user/pixinvent/portfolio?ref=pixinvent" target="_blank" class="text-bold-800 grey darken-2">PIXINVENT </a>, All rights reserved. </span><span class="float-md-right d-xs-block d-md-inline-block">Hand-crafted & Made with <i class="icon-heart5 pink"></i></span></p>
-    </footer> -->
+                  <div class="modal fade text-xs-left" id="small" tabindex="-1" role="dialog" aria-labelledby="myModalLabel19" aria-hidden="true">
+            									  <div class="modal-dialog modal-sm" role="document">
+            										<div class="modal-content">
+            										  <div class="modal-header">
+            											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            											  <span aria-hidden="true">&times;</span>
+            											</button>
+            											<h4 class="modal-title" id="myModalLabel19">Basic Modal</h4>
+            										  </div>
+                                  <form class="form-password">
+                                    <div class="modal-body">
+                                      <div class="form-group">
+                                        <label id="password"> Password </label>
+                                        <input type="password" name="password" class="form-control border-primary">
+                                      </div>
+                                      <div class="form-group">
+                                        <label id="new_password"> New Password </label>
+                                        <input type="password" name="new_password" class="form-control border-primary">
+                                      </div>
+                                      <div class="form-group">
+                                        <label id="retype_password"> Retype Password</label>
+                                        <input type="password" name="retype_password" class="form-control border-primary">
+                                      </div>
+                                    </div>
+              										  <div class="modal-footer">
+              											<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Close</button>
+              											<button type="submit" class="btn btn-outline-primary">Change Password</button>
+              										  </div>
+                                  </form>
+            										</div>
+            									  </div>
+                              </div>
+
+
+    <footer class="footer footer-static footer-light navbar-border">
+      <p class="clearfix text-muted text-sm-center mb-0 px-2"><span class="float-md-left d-xs-block d-md-inline-block">Copyright  &copy; 2017 <a target="_blank" class="text-bold-800 grey darken-2"> Universitas Bung Karno </a>, All rights reserved. </span><span class="float-md-right d-xs-block d-md-inline-block"> Made with <i class="icon-heart5 pink"></i> by Alltimproject </span></p>
+    </footer>
 
     <!-- BEGIN VENDOR JS-->
     <script src="<?= base_url().'assets/app-assets/js/core/libraries/jquery.min.js' ?>" type="text/javascript"></script>

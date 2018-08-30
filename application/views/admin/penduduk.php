@@ -21,7 +21,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="id_penduduk">ID Penduduk</label>
-                <input type="number" name="id_penduduk" id="id_penduduk" class="form-control border-primary">
+                <input type="text" name="id_penduduk" id="id_penduduk" class="form-control border-primary" maxlength="16">
               </div>
               <div class="form-group">
                 <label for="nama_penduduk">Nama</label>
@@ -33,7 +33,7 @@
               </div>
               <div class="form-group">
                 <label for="tgl_lahir">Tanggal Lahir</label>
-                <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control border-primary">
+                <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control border-primary" max="<?= date('Y-m-d') ?>">
               </div>
               <div class="form-group">
                 <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -189,16 +189,24 @@
       load_penduduk(cari);
     });
 
+    $('#id_penduduk').keypress(function(e) {
+	    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+	        return false;
+	    }
+    });
+
     $('#simpan').on('click', function(){
       save_method = 'simpan';
       $('.form-data')[0].reset();
       $('#id_penduduk').focus();
       $('#submit_penduduk').removeClass().addClass('btn btn-md btn-primary col-md-6').text('Simpan');
       $('#card-form').fadeIn();
+      $(this).hide();
     });
 
     $('#batal').on('click', function(){
       $('#card-form').fadeOut();
+      $('#simpan').show();
     });
 
     $('.form-data').on('submit', function(e){

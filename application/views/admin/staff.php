@@ -22,7 +22,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="nip">NIP</label>
-                <input type="number" name="nip" id="nip" class="form-control border-primary">
+                <input type="text" name="nip" id="nip" class="form-control border-primary">
               </div>
               <div class="form-group">
                 <label for="nama_staff">Nama</label>
@@ -34,7 +34,7 @@
               </div>
               <div class="form-group">
                 <label for="tgl_lahir">Tanggal Lahir</label>
-                <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control border-primary">
+                <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control border-primary" max="<?= date('Y-m-d') ?>">
               </div>
               <div class="form-group">
                 <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -52,7 +52,7 @@
               </div>
               <div class="form-group">
                 <label for="no_tlp">No Telepon</label>
-                <input type="number" name="no_tlp" id="no_tlp" class="form-control border-primary">
+                <input type="text" name="no_tlp" id="no_tlp" class="form-control border-primary" maxlength="15">
               </div>
               <div class="form-group">
                 <label for="jabatan">Jabatan</label>
@@ -162,6 +162,7 @@
       $('#nip').focus();
       $('#submit_staff').removeClass().addClass('btn btn-md btn-primary col-md-6').text('Simpan');
       $('#card-form').fadeIn();
+      $(this).hide();
     });
 
     $('#cari').on('keyup', function(){
@@ -170,8 +171,15 @@
       // alert('Successs');
     });
 
+    $('#nip, #no_tlp').keypress(function(e) {
+	    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+	        return false;
+	    }
+    });
+
     $('#batal').on('click', function(){
       $('#card-form').fadeOut();
+      $('#simpan').show();
     });
 
     $('.form-data').on('submit', function(e){

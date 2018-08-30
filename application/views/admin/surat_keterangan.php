@@ -60,7 +60,7 @@
       <div class="card-block" style="margin-bottom: 0px; padding-bottom: 5px;">
         <div class="form-group">
           <div class="position-relative has-icon-left">
-            <input type="text" class="form-control" placeholder="Masukkan No Surat" name="cari" id="cari">
+            <input type="text" class="form-control" placeholder="Masukkan No Surat atau Keterangan" name="cari" id="cari">
               <div class="form-control-position">
                 <i class="icon-search4"></i>
               </div>
@@ -214,10 +214,17 @@
       $('#nip').focus();
       $('#submit_keterangan').removeClass().addClass('btn btn-md btn-primary col-md-6').text('Simpan');
       $('#card-form').fadeIn();
+      $(this).hide();
     });
 
     $('#batal').on('click', function(){
       $('#card-form').fadeOut();
+      $('#simpan').show();
+    });
+
+    $('#cari-pddk').keyup(function(){
+      var cari = $(this).val();
+      load_penduduk(cari);
     });
 
     $('#lookup-pddk').on('click', function(){

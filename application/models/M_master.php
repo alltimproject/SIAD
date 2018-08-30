@@ -74,6 +74,7 @@
 
       if($like != null){
         $this->db->like('no_surat', $like);
+        $this->db->or_like('keterangan', $like);
       }
 
       return $this->db->get();
