@@ -130,6 +130,7 @@
               <th>Status</th>
               <th>Pekerjaan</th>
               <th>Kewarganegaraan</th>
+              <th></th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -153,7 +154,7 @@
         var html = '';
 
         if(data.penduduk.length <= 0){
-          html += '<tr><td colspan="11">Tidak ada data</td></tr>';
+          html += '<tr><td colspan="12"><center>Tidak ada data</center></td></tr>';
         } else {
 
           $.each(data.penduduk, function(k, v){
@@ -169,14 +170,16 @@
             html += `<td>${v.status}</td>`;
             html += `<td>${v.pekerjaan}</td>`;
             html += `<td>${v.kewarganegaraan}</td>`;
+            html += `<td><button class="btn btn-sm btn-success" id="edit" data-id="${v.id_penduduk}" data-nama="${v.nama_penduduk}" data-tempat="${v.tempat_lahir}" data-tgl="${v.tgl_lahir}" data-jkel="${v.jenis_kelamin}" data-agama="${v.agama}" data-alamat="${v.alamat}" data-kel="${v.kelurahan}" data-kec="${v.kecamatan}" data-sts="${v.status}" data-pkerja="${v.pekerjaan}" data-kwn="${v.kewarganegaraan}"><i class="icon-pencil2"></i></button></td>`;
             html += `</tr>`;
           });
         }
-
         $('#t_penduduk tbody').html(html);
       }
     });
   }
+
+
 
   $(document).ready(function(){
     var save_method;
@@ -198,10 +201,45 @@
     $('#simpan').on('click', function(){
       save_method = 'simpan';
       $('.form-data')[0].reset();
-      $('#id_penduduk').focus();
       $('#submit_penduduk').removeClass().addClass('btn btn-md btn-primary col-md-6').text('Simpan');
       $('#card-form').fadeIn();
+      $('#id_penduduk').focus();
       $(this).hide();
+    });
+
+    $('#t_penduduk').on('click', '#edit', function(){
+      save_method = 'edit';
+      var id_penduduk = $(this).attr('data-id');
+      var nama_penduduk = $(this).attr('data-nama');
+      var tempat= $(this).attr('data-tempat');
+      var tgl_lahir= $(this).attr('data-tgl');
+      var jkel= $(this).attr('data-jkel');
+      var agama= $(this).attr('data-agama');
+      var alamat= $(this).attr('data-alamat');
+      var kelurahan= $(this).attr('data-kel');
+      var kecamatan= $(this).attr('data-kec');
+      var status= $(this).attr('data-sts');
+      var pekerjaan= $(this).attr('data-pkerja');
+      var kewarganegaraan= $(this).attr('data-kwn');
+
+      $('#id_penduduk').val(id_penduduk);
+      $('#nama_penduduk').val(nama_penduduk);
+      $('#tempat_lahir').val(tempat);
+      $('#tgl_lahir').val(tgl_lahir);
+      $('#jenis_kelamin').val(jkel);
+      $('#agama').val(agama);
+      $('#alamat').val(alamat);
+      $('#kelurahan').val(kelurahan);
+      $('#kecamatan').val(kecamatan);
+      $('#status').val(status);
+      $('#pekerjaan').val(pekerjaan);
+      $('#kewarganegaraan').val(kewarganegaraan);
+
+      $('#card-form').fadeIn();
+      $('#id_penduduk').focus();
+      $('#submit_penduduk').removeClass().addClass('btn btn-md btn-success col-md-6').text('Update');
+
+
     });
 
     $('#batal').on('click', function(){
