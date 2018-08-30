@@ -157,14 +157,15 @@ class Admin extends CI_Controller {
           'nip' =>$this->input->post('nip')
         );
 
-        $cek = $this->m_main_>edit_data('t_staff', $data, $where);
+        $cek = $this->m_main->edit_data('t_staff', $data, $where);
 
-        if ($cek)
+        if($cek)
         {
           echo "berhasil";
-        }else {
+        } else {
           echo "gagal";
         }
+
       break;
 
       default:
