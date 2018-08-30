@@ -34,6 +34,9 @@ class Admin extends CI_Controller {
     $this->load->view('admin/staff');
   }
 
+
+
+
   function kelahiran()
   {
     $this->load->view('admin/surat_kelahiran');
@@ -44,6 +47,7 @@ class Admin extends CI_Controller {
     $this->load->view('admin/surat_keterangan');
   }
 
+  // admin/response_penduduk/edit
   function response_penduduk($aksi)
   {
     switch ($aksi) {
@@ -64,6 +68,37 @@ class Admin extends CI_Controller {
         );
 
         $cek = $this->m_main->add_data('t_penduduk', $data);
+
+        if($cek)
+        {
+          echo "berhasil";
+        } else {
+          echo "gagal";
+        }
+      break;
+
+      case 'edit':
+        $data = array(
+          'id_penduduk' => $this->input->post('id_penduduk'),
+          'nama_penduduk' => $this->input->post('nama_penduduk'),
+          'tempat_lahir' => $this->input->post('tempat_lahir'),
+          'tgl_lahir' => $this->input->post('tgl_lahir'),
+          'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+          'agama' => $this->input->post('agama'),
+          'alamat' => $this->input->post('alamat'),
+          'kelurahan' => $this->input->post('kelurahan'),
+          'kecamatan' => $this->input->post('kecamatan'),
+          'status' => $this->input->post('status'),
+          'pekerjaan' => $this->input->post('pekerjaan'),
+          'kewarganegaraan' => $this->input->post('kewarganegaraan')
+        );
+
+        $where = array(
+          'id_penduduk' => $this->input->post('id_penduduk')
+          // WHERE id_penduduk = $_POST['id_penduduk']
+        );
+
+        $cek = $this->m_main->edit_data('t_penduduk', $data, $where);
 
         if($cek)
         {
