@@ -146,7 +146,7 @@ class Admin extends CI_Controller {
           'nama_staff' => $this->input->post('nama_staff'),
           'tempat_lahir' => $this->input->post('tempat_lahir'),
           'tgl_lahir' => $this->input->post('tgl_lahir'),
-          'alamat' => $this->input->post('tgl_lahir'),
+          'alamat' => $this->input->post('alamat'),
           'jenis_kelamin' => $this->input->post('jenis_kelamin'),
           'no_tlp' => $this->input->post('no_tlp'),
           'jabatan' => $this->input->post('jabatan'),
