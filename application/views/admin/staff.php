@@ -129,7 +129,7 @@
         var html = '';
 
         if(data.staff.length <= 0){
-          html += '<tr><td colspan="9">Tidak ada data</td></tr>';
+          html += '<tr><td colspan="9"><center>Tidak ada data</center></td></tr>';
         } else {
 
           $.each(data.staff, function(k, v){
