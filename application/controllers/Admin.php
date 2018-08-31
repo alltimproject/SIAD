@@ -140,6 +140,34 @@ class Admin extends CI_Controller {
         }
       break;
 
+      case 'edit':
+        $data = array(
+          'nip' => $this->input->post('nip'),
+          'nama_staff' => $this->input->post('nama_staff'),
+          'tempat_lahir' => $this->input->post('tempat_lahir'),
+          'tgl_lahir' => $this->input->post('tgl_lahir'),
+          'alamat' => $this->input->post('tgl_lahir'),
+          'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+          'no_tlp' => $this->input->post('no_tlp'),
+          'jabatan' => $this->input->post('jabatan'),
+          'status' => $this->input->post('status')
+        );
+
+        $where = array(
+          'nip' =>$this->input->post('nip')
+        );
+
+        $cek = $this->m_main->edit_data('t_staff', $data, $where);
+
+        if($cek)
+        {
+          echo "berhasil";
+        } else {
+          echo "gagal";
+        }
+
+      break;
+
       default:
         // code...
       break;
