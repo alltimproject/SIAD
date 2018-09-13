@@ -91,7 +91,7 @@
     <!-- main menu-->
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow">
       <div class="main-menu-header">
-        
+
       </div>
       <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
@@ -157,7 +157,7 @@
             											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
             											  <span aria-hidden="true">&times;</span>
             											</button>
-            											<h4 class="modal-title" id="myModalLabel19">Basic Modal</h4>
+            											<h4 class="modal-title" id="myModalLabel19">Ganti Password</h4>
             										  </div>
                                   <form class="form-password">
                                     <div class="modal-body">
