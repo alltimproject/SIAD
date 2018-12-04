@@ -16,6 +16,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="../../app-assets/images/ico/apple-icon-152.png">
     <link rel="shortcut icon" type="image/x-icon" href="../../app-assets/images/ico/favicon.ico">
     <link rel="shortcut icon" type="image/png" href="../../app-assets/images/ico/favicon-32.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url().'images/depok/logokotadepok.png' ?>">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -43,7 +44,7 @@
 
     <style media="screen">
       .background{
-        background-image: url('<?= base_url().'images/cover-03.jpg' ?>');
+        background-image: url('<?= base_url().'images/depok/cover-03.png' ?>');
         -webkit-background-size: 100% 100%;
         -moz-background-size: 100% 100%;
         -o-background-size: 100% 100%;
